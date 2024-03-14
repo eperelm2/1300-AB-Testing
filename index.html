@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- import CSS styles -->
+    <title>AB Testing Handin</title>
+    <link rel="stylesheet" href="style.css" /> 
+    </head>
+  <body>
+
+    <h1>A/B Testing</h1>
+    <h2 class="description">Practical Application of Statistical Tests on Two Different UI Designs </h2>
+    <!-- <img class="first-picture" src="Screenshot 2024-03-06 at 11.06.13 PM.png"> -->
+   
+    <h2 class="body-text">Overview</h2>
+    Through this project, we attempted to demonstrate the importance of design and how the alterations in 
+    a page's UI can be demonstrated through statistical analysis. We utilized A/B testing to analyze the 
+    improvements of changing a page's UI. Through this testing, we can see clear changes in a user's interaction
+    statistics with the page.
+    <br> <br>
+    This project offered the opportunity to utilize and improve my skills with statistical testing and 
+    learn the impact of design choices. I can now identify the correct statistical test to reach confident 
+    conclusions about two alternate designs' impact on a user's interactions and decisions with/on a webpage.
+
+     <h2 class="body-text">UI Changes</h2>
+
+     I added a black border around each available appointment to add clear separation and division to the appointments page.
+     <br><br>
+        <img class="first-picture" src="Screenshot 2024-03-13 at 2.35.51 PM.png">
+<br>
+    <h2 class="body-text">Hypotheses</h2>
+
+    I created null and alternative hypothesis for 3 data types, the misclick rate, the time spent on the page, and the
+    mouse move distance. Mouse movement distance looks at the distance the user's mouse has moved (in pixels). 
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Misclick rate</th>
+        <th>Time on page</th>
+        <th>Mouse move distance</th>
+      </tr>
+      <tr>
+        <th>Null Hypothesis</th>
+        <th> 
+          The user’s misclick frequency will be the same in version A as in version B. <br> <br>
+          <div class="justification">
+              Justification: I expected to reject the null hypothesis due to the samples'
+              differing organization, allowing users to experience different 
+              probabilities of not clicking the correct button. 
+          </div>
+           
+        </th>
+        <th>
+          The amount of time spent on the page in version A will be the same as in version B.  <br> <br>
+          <div class="justification">
+            Justification: I expect to reject the null hypothesis because the difference in layout makes users 
+            spend different amounts of time trying to understand and navigate the page.
+
+        </div>
+        </th>
+        <th>
+          The distance traveled by the mouse will be the same in version A as in version B.<br> <br>
+          <div class="justification">
+            Justification: I expect to reject the null hypothesis because the difference 
+            in design means that the user will navigate and move the mouse around the page 
+            at different levels.
+        </div>
+        </th>
+      </tr>
+      <tr>
+        <th>Alternative Hypothesis</th>
+        <th> 
+          The rate of misclicks in version B will be fewer than in version A. <br> <br>
+          <div class="justification">
+              Justification: I believe the alternative hypothesis will be true because there 
+              are better-defined sections to show which buttons are associated with each 
+              appointment in version B. This change limits a user’s error of clicking the 
+              wrong button to schedule an appointment.
+          </div>
+        </th>
+        <th>
+          The amount of time spent on the page in version B will be less than in version A.  <br> <br>
+          <div class="justification">
+            Justification: I believe the alternative hypothesis will be true because, 
+            in version B, there is a better sense of division and separation between sections. 
+            Therefore, the user will spend less time deciding if they are going to click the wrong button.
+
+        </div>
+        </th>
+        <th>
+          The distance moved by the mouse will be less in version B than in version A.<br> <br>
+          <div class="justification">
+            Justification: I believe that the alternative hypothesis will be true because a user 
+            can more clearly understand what specific buttons are associated with an appointment 
+            in version B, reducing the amount of scrolling and mouse movement around the page to 
+            search for the correct section and button. 
+        </div>
+        </th>
+
+      </tr>
+    </table>
+
+    
+    <h2 class="body-text">Analysis</h2>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Misclick rate</th>
+        <th>Time on page</th>
+        <th>Mouse move distance</th>
+      </tr>
+      <tr>
+        <th>Test</th>
+        <th>I used a one-tailed t-test to see if version B (the experimental) has a misclick rate
+          smaller than version A (the baseline), a continuous test. 
+          I set all true values to 1 and all false values to 0 to reflect the 
+          boolean results of the did_misclick data type.</th>
+        <th>I used a one-tail t-test to observe if version B (the experimental) 
+          yields a smaller amount of time spent on the page than version A (the baseline), 
+          a continuous test</th>
+        <th>I used a one-tailed t-test to investigate if version B (the experimental) 
+          yields a smaller distance traveled than version A (the baseline), a continuous test.
+        </th>
+      </tr>
+      <tr>
+        <th>Statistical significance</th>
+        <th>The difference in version B with respect to the did_misclick metric is statistically significant </th>
+        <th>The difference in version B and A with respect to the time spent on the page is statistically significant </th>
+        <th>The difference in version B and A with respect to the distance of mouse movement is statistically significant</th>
+      </tr>
+      <tr>
+        <th>Important values</th>
+        <th>From the calculations, we find 36.59 degrees of freedom, showing the number of 
+          available data points from both versions to estimate variability in the data. Our 
+          t-score of -3.43269 tells us the magnitude of the difference between our two samples. 
+          This score shows that the sample mean is below the hypothesized mean. Further, version A 
+          has a higher frequency of misclicks. We can use both of these calculations to find our 
+          p-value of 0.0007, which tells us the chance that the two groups are the same. Since this 
+          value is below the typical significance level of 0.05, we can reject our null hypothesis 
+          and conclude that the fewer number of misclicks in version B is not due to random chance but 
+          demonstrates a clear change in efficiency. 
+        </th>
+        <th>We can use our data to calculate our degrees of freedom to get 26.03778, which tells us 
+          the variability in the data from both versions and estimates our sample’s parameters. 
+          Our t-score is -9.0423, showing how many standard errors the sample mean
+           is from the hypothesized mean. Because our score is negative, we know that the 
+           average user in version A spends more time on the page. Utilizing these calculations, 
+           we see our p-value is 0.0000000008. This extremely low-value shares that there is a 
+           clear difference between the two samples and how a user interacts with the page, 
+           which does not occur by chance. Since our p-value is below the typical significance 
+           level of 0.05, we can reject our null hypothesis and conclude that users spend less time 
+           on the page in version B than in version A.</th>
+        <th>Using our data for the mouse movement distance, we see that our degrees of 
+          freedom are 23.622, which tells us the number of available data points from both 
+          samples to estimate variability in the data. Our calculated t-score of -4.53 shares 
+          that the sample mean is less than the hypothesized mean. The distance traveled by the 
+          mouse in version A is greater than in version B. With these calculations, we find 
+          a p-value of 0.00007. Our p-value, being below the typical significance level of 0.05, shows 
+          that the distance of mouse movement in version B is significantly smaller than in version A, 
+          and this is not due to random chance but a better UI design. 
+        </th>
+      </tr>
+      <tr>
+        <th>Hypothesis rejection conclusion</th>
+        <th>We can reject our null hypothesis due to a p-value < 0.05</th>
+        <th>We can reject our null hypothesis due to a p-value < 0.05</th>
+        <th>We can reject our null hypothesis due to a p-value < 0.05</th>
+      </tr>
+    </table>
+    
+
+    <h2 class="body-text">Summary Statistics</h3>
+    
+      For each test, we collected 29 data points for version A and 28 data
+       points for version B. This difference in data collection could skew the results but 
+       likely will not offer a major difference or statistical significance in the calculations 
+       of the UI redesign in version B. <br> <br>
+
+       <div class="bold">Misclick Frequency:</div> 
+        <div class="indentation">
+          The median in version A of misclick frequency is 1, showing that the middle value of 
+          the dataset is 1. Since its boolean values are either 0 or 1 and the median is 1, we 
+          know there are more 1s than 0s. However, in version B, we can see a median value 
+          of 0, showing more 0s than 1s. The mode values yield the same results, 
+          confirming our findings. We can also look at the mean to see that version A has an 
+          average of 0.5 and version B has an average of 0.08697, meaning users likely reported 
+          more false than true values for our misclick data in version B. The variances of these samples are 
+          0.261 and 0.083, showing that data points in version A differ from the average more than 
+          in version B.
+        </div>
+
+        <br><br>
+
+       <div class="bold">Time on page:</div> 
+        <div class="indentation">
+          The median in version A is much higher than in version B, with a 
+          value of 38,525 milliseconds, as opposed to version B’s value of 
+          7,356 milliseconds. We can also see the average in version A is 36,139.458 
+          and 8,365.826 in version B, and the variance in version A is 212,313,712.7 and 
+          13,519,153.15 in version B. These statistics demonstrate a much smaller average 
+          and data point variation from the average in version B than in version A.
+        </div>
+
+        <br><br>
+
+        <div class="bold">Mouse movement distance:</div>
+        
+        <div class="indentation">
+          version A has a median of 7,064.6607, while version B has a 
+          median of 2,616.44, showing a clear reduction in mouse travel 
+          distance in the revised UI. The average and variance of version A 
+          are 8,386.22 and 3,4754,589.59 and in version B, 2,898.038 and 45,0632.44. 
+          This reduction in version B’s statistical measurements shows a much smaller 
+          average traveled distance of the user’s mouse. 
+        </div>
+
+        <h2 class="body-text">Findings</h2> 
+        I am confident that the alternative hypothesis is true, and version B is likely better than version A. The average user has fewer misclicks, spends
+         less time navigating the page, and moves the mouse a smaller distance when navigating 
+         version B. The average user has 17% fewer misclicks, spends 27,774 fewer milliseconds 
+         on the page, and moves the mouse approximately 5,488 pixels less in version B. These 
+         factors likely contribute to a true difference in the redesigned UI.
+
+    <h2 class="body-text">Conclusion</h2> 
+
+    Through the UI change in version B, I received much faster and better results 
+    when navigating the page. I utilize one-tailed t-tests in order to statistically prove 
+    the significance and improvement in the alterations. From these statistical calculations, 
+    I was able to calculate the p-value, t-score, degrees of freedom, average, variance, median, 
+    and mode to logically and reasonably conclude and demonstrate the refinement in version B’s design. Overall, I learned the importance of design and 
+    how to demonstrate these impactful changes through statistical analysis. 
+
+
+  </body>
+
+</html>
